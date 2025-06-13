@@ -1,0 +1,62 @@
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+    }
+
+    .grid img, .reset-container img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 170px);
+    gap: 5px;
+}
+
+
+.grid img {
+    width: 100px;
+    height: 170px;
+    cursor: pointer;
+    position: relative; /* 讓方框可以疊加 */
+}
+
+.reset-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* 讓重置按鈕與九宮格有間距 */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* 讓按鈕之間有間距 */
+    margin-top: 20px;
+}
+
+
+.action-btn {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
