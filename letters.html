@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英文單字練習</title>
+    <title>英文字母練習</title>
 
     
     <link rel="stylesheet" href="styles.css">
@@ -24,6 +24,8 @@
     </div>
 
     <audio id="audio"></audio>
+    <audio id="audio1"></audio>
+    <audio id="audio2"></audio>
    
     <script>
 
@@ -44,11 +46,11 @@
             maleVoice();
 
 
-            const images = Array.from({length: 55}, (_, i) => `flashcard/images/FlashCard50_F${i+1}.png`);
-            const alternateImages = Array.from({length: 55}, (_, i) => `flashcard/images/FlashCard50_B${i+1}.png`);
-            const audioFiles = Array.from({length: 55}, (_, i) => `flashcard/audio/english/audio${i+1}.mp3`);
-            const madrineAudio = Array.from({length: 55}, (_, i) => `flashcard/audio/madrine/audio${i+1}.mp3`);
-
+            const images = Array.from({length: 26}, (_, i) => `letters/images/PokerCardF${i+1}.png`);
+            const alternateImages = Array.from({length: 26}, (_, i) => `letters/images/PokerCard${i+1}.png`);
+            const audioFiles = Array.from({length: 26}, (_, i) => `letters/audio/english/audio${i+1}.mp3`);
+            const madrineAudio = Array.from({length: 26}, (_, i) => `letters/audio/madrine/audio${i+1}.mp3`);
+            const lettersAudio = Array.from({length: 26}, (_, i) => `letters/audio/letters/audio${i+1}.mp3`);
 
             const grid = document.getElementById("grid");
   	    let selectedImages = []; // 存儲已選擇的圖片索引
@@ -89,15 +91,22 @@
 
                 // 替換圖片並播放音檔
                 img.src = alternateImages[index];
-                const audio = document.getElementById("audio");
-             
+                const audio1 = document.getElementById("audio1");
+                const audio2 = document.getElementById("audio2");
+
+
+                audio1.src = lettersAudio[index];
+                
                 if (maleBtn.style.border == "none") {
-                    audio.src = madrineAudio[index];
+                    audio2.src = madrineAudio[index];
                 } else {
-                    audio.src = audioFiles[index];
+                    audio2.src = audioFiles[index];
                 }
 
-                audio.play();
+                audio1.play();
+                audio1.onended = function() {
+                    audio2.play();
+                };
 
                 // 設定延遲，音檔播放後恢復原圖
                 setTimeout(() => {
